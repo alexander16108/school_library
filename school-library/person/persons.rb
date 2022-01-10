@@ -1,5 +1,5 @@
 class Person
-  attr_reader :id
+  attr_reader :id, :parent_permission
   attr_accessor :name, :age
 
   def initialize(age, name = 'unknown', parent_permission: true)
@@ -9,14 +9,14 @@ class Person
     @parent_permission = parent_permission
   end
 
-  def is_of_age?
+  def _is_of_age?
     return true if @age >= 18
 
     false
   end
 
   def can_use_services?
-    return true if is_of_age? || parent_permission
+    return true if _is_of_age? || @parent_permission
 
     false
   end
