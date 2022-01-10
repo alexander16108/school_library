@@ -1,10 +1,12 @@
-require "../person/persons.rb"
+require '../person/persons'
 
 class Student < Animal
-def initialize(classroom)
-  @classroom = classroom
-end
+  def initialize(classroom)
+    super(name, 21, true)
+    @classroom = classroom
+  end
+
   def play_hooky
-  return "¯\(ツ)/¯"
+    "¯\(ツ)/¯"
   end
 end
