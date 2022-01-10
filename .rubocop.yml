@@ -50,4 +50,3 @@ Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
   Enabled: false
-gem 'rubocop', '>= 1.0', '< 2.0'
