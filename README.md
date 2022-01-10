@@ -20,35 +20,24 @@ To get a local copy up and running follow these simple example steps.
 
 
 ### Usage
-- `$ git clone https://github.com/alexander16108/decodeRb/tree/decode`
-- `$ cd decodeRb`
+- `$ git clone https://github.com/alexander16108/school_library/tree/decode`
+- `$ cd school_library`
 - run the command `code .` to open the file in VS Code
 - run the command `irb` in the command prompt
-- Copy code from `morse.rb` and run it in the command prompt
+- Copy code from `school.rb` and run it in the command prompt
 
 ## Authors
 
-👤 **Ngu Kingsely**
-
-- GitHub: [@Kingstalux](https://github.com/Kingstalux)
-- Twitter: [@NguKingsley](https://twitter.com/NguKingsley)
-- LinkedIn: [Ngu Kingsely](https://www.linkedin.com/in/ngu-kingsely-junior-cho-974b60136/)
-
 👤 **Alexander Odufuye**
 
-- GitHub: [@Alexander](https://github.com/AlexanderMayowa)
-
-
-**GABRIEL NWACHUKWU**
-
-- GitHub: [@githubhandle](https://github.com/gabrielcoder247)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/gabriel-nwachukwu-209613173/)
+- GitHub: [Alexander](https://github.com/AlexanderMayowa)
+- LinkedIn: [Alexander odufuye 🤓](https://www.linkedin.com/in/[codingrex/)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/alexander16108/decodeRb/tree/decode/issues).
+Feel free to check the [issues page](https://github.com/alexander16108/school_library/tree/decode/issues).
 
 ## Show your support
 
