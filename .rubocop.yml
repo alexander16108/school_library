@@ -4,9 +4,7 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
-
   DisplayCopNames: true
-
 Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
@@ -50,4 +48,3 @@ Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
   Enabled: false
-gem 'rubocop', '>= 1.0', '< 2.0'
