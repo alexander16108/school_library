@@ -1,3 +1,5 @@
+require './corrector'
+
 class Person
   attr_reader :id, :parent_permission
   attr_accessor :name, :age
@@ -13,6 +15,15 @@ class Person
     return true if @age >= 18
 
     false
+  end
+
+  def corrector_name
+    correct = Corrector.new
+    @corrector_name = correct.corrector_name(@corrector_name)
+  end
+
+  def validate_name
+    return true if corrector_name == 10
   end
 
   def can_use_services?
