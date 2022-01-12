@@ -4,10 +4,10 @@ class Corrector
   end
 
   def correct_name
-    if  @correct_name.length > 10
-      return correct_name.slice!(10)    
+    if @correct_name.length > 10
+      correct_name.slice!(10)
     else
-      return @correct_name.capitalize
+      @correct_name.capitalize
     end
   end
 end

@@ -18,12 +18,12 @@ class Person
   end
 
   def corrector_name
-    correct = Corrector.new()
+    correct = Corrector.new
     @corrector_name = correct.corrector_name(@corrector_name)
   end
 
   def validate_name
-    return true if corrector_name == 10 : corrector_name.capitalize
+    return true if corrector_name == 10
   end
 
   def can_use_services?
