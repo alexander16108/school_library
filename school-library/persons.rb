@@ -1,7 +1,7 @@
 require './corrector'
 
 class Person
-  attr_reader :id, :parent_permission
+  attr_reader :id, :parent_permission, :rental
   attr_accessor :name, :age
 
   def initialize(age, name = 'unknown', parent_permission: true)
@@ -9,6 +9,7 @@ class Person
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rental []
   end
 
   def _is_of_age?
