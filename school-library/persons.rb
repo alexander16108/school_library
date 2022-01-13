@@ -10,7 +10,7 @@ class Person
     @name = name
     @age = age
     @parent_permission = parent_permission
-    @rental = []
+    @rentals = []
   end
 
   def _is_of_age?
@@ -35,7 +35,7 @@ class Person
   end
 
   def add_rental(rental)
-    @rental.push(rental)
+    @rentals.push(rental)
     rental.person = self
   end
 end
