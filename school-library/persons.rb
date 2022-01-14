@@ -1,5 +1,5 @@
-require './corrector'
-require './rentals'
+require_relative './corrector'
+require_relative './rental'
 
 class Person
   attr_reader :id, :parent_permission, :rental

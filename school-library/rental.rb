@@ -1,4 +1,4 @@
-require './book'
+require_relative './book'
 
 class Rental
   attr_reader :person, :book, :date
