@@ -4,12 +4,14 @@ require './school-library/persons'
 require './school-library/teacher'
 require './school-library/book'
 
-def user_input
+def input_age
   print 'Age: '
-  user_age = Integer(gets.chomp)
+  gets.chomp
+end
 
+def input_name
   print 'Name: '
-  user_name = gets.chomp
+  gets.chomp
 end
 
 class Methods
@@ -22,7 +24,8 @@ class Methods
     person_option = Integer(gets.chomp)
     case person_option
     when 1
-      (user_age, user_name) = user_input
+      user_age = input_age
+      user_name = input_name
 
       print 'Has parent permission? [Y/N]: '
       user_permission = gets.chomp.to_s.upcase
@@ -42,7 +45,8 @@ class Methods
       puts 'Person created successfully!'
       puts "\n"
     when 2
-      (user_age, user_name) = user_input
+      user_age = input_age
+      user_name = input_name
 
       print 'Specialization: '
       user_specialization = gets.chomp
