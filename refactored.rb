@@ -65,6 +65,12 @@ class Methods
       puts person[:output]
     end
   end
+
+  def person_rent
+    @person_array.each_with_index do |person, index|
+      puts "#{index}) #{person[:output]}"
+    end
+  end
 end
 
 class BooksList
@@ -91,6 +97,12 @@ class BooksList
   def book_list
     @books.each do |book|
       puts book[:output]
+    end
+  end
+
+  def rent_book
+    @books.each_with_index do |book, index|
+      puts "#{index}) #{book[:output]}"
     end
   end
 end

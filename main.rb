@@ -26,19 +26,19 @@ class App
   end
 
   method = Methods.new
-  book = BooksList.new
-  rent = Rents.new
+  books = BooksList.new
+  rent = Rents.new(books, method)
 
   loop do
     case home_page
     when 1
-      book.book_list
+      books.book_list
     when 2
       method.people_list
     when 3
       method.create_person
     when 4
-      book.create_book
+      books.create_book
     when 5
       rent.create_rental
     when 6

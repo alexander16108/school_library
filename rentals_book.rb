@@ -2,26 +2,22 @@ require_relative './book_list'
 require './refactored'
 
 class Rents
-  def initialize
-    # @person_array = []
-    # @books = []
+  def initialize (books, persons)
+    @person_array = persons
+    @books = books
     @rental_array = []
   end
 
   def create_rental
     puts 'Select a book from the following list by number: '
-    @books.each_with_index do |book, index|
-      puts "#{index}) #{book[:output]}"
-    end
+    @books.rent_book
     book_selected = Integer(gets.chomp)
-    book_chosen = @books[book_selected][:object]
+    book_chosen = @books.book_list[book_selected][:object]
 
     puts 'Select a person from the following list by number (not id): '
-    @person_array.each_with_index do |person, index|
-      puts "#{index}) #{person[:output]}"
-    end
+    @person_array.person_rent
     person_selected = Integer(gets.chomp)
-    person_chosen = @person_array[person_selected][:object]
+    person_chosen = @person_array.people_list[person_selected][:object]
 
     print 'Date: '
     rental_date = gets.chomp
