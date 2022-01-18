@@ -21,7 +21,13 @@ class BooksList
 
   def book_list
     @books.each do |book|
-      puts book[:output]
+     puts book[:output]
+    end
+  end
+
+  def rent_book
+    @books.each_with_index do |book, index|
+      puts "#{index}) #{book[:output]}"
     end
   end
 end

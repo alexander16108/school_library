@@ -12,7 +12,7 @@ class Rents
     puts 'Select a book from the following list by number: '
     @books.rent_book
     book_selected = Integer(gets.chomp)
-    book_chosen = @books[book_selected][:object]
+    book_chosen = @books.book_list[book_selected][:object]
 
     puts 'Select a person from the following list by number (not id): '
     @person_array.person_rent

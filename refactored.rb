@@ -66,47 +66,13 @@ class Methods
 
   def people_list
     @person_array.each do |person|
-      puts person[:output]
+    puts person[:output]
     end
   end
 
   def person_rent
     @person_array.each_with_index do |person, index|
-      puts "#{index}) #{person[:output]}"
-    end
-  end
-end
-
-class BooksList
-  def initialize
-    @books = []
-  end
-
-  def create_book
-    print 'Title: '
-    book_title = gets.chomp
-
-    print 'Author: '
-    book_author = gets.chomp
-
-    puts 'Book created successfully!'
-
-    book = Book.new(book_title, book_author)
-    @books.push({
-                  output: "Title: #{book.title}, Author: #{book.author}",
-                  object: book
-                })
-  end
-
-  def book_list
-    @books.each do |book|
-      puts book[:output]
-    end
-  end
-
-  def rent_book
-    @books.each_with_index do |book, index|
-      puts "#{index}) #{book[:output]}"
+     puts "#{index}) #{person[:output]}"
     end
   end
 end
