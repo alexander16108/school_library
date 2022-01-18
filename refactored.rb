@@ -22,7 +22,7 @@ class Methods
     person_option = Integer(gets.chomp)
     case person_option
     when 1
-      user_input
+      (user_age, user_name) = user_input
 
       print 'Has parent permission? [Y/N]: '
       user_permission = gets.chomp.to_s.upcase
@@ -42,7 +42,7 @@ class Methods
       puts 'Person created successfully!'
       puts "\n"
     when 2
-      user_input
+      (user_age, user_name) = user_input
 
       print 'Specialization: '
       user_specialization = gets.chomp

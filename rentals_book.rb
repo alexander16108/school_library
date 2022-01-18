@@ -3,8 +3,8 @@ require './refactored'
 
 class Rents
   def initialize
-    @person_array = []
-    @books = []
+    # @person_array = []
+    # @books = []
     @rental_array = []
   end
 
