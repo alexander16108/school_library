@@ -20,7 +20,7 @@ To get a local copy up and running follow these simple example steps.
 
 
 ### Usage
-- `$ git clone https://github.com/alexander16108/school_library/tree/decode`
+- `$ git clone https://github.com/alexander16108/school_library.git`
 - `$ cd school_library`
 - run the command `code .` to open the file in VS Code
 - run the command `irb` in the command prompt
