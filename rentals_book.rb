@@ -33,8 +33,6 @@ class Rents
     @rental_array.each do |rental|
       if person_id == rental.person.id
         puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
-      else
-        puts 'ID does not exist'
       end
     end
   end
