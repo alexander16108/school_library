@@ -66,13 +66,13 @@ class Methods
 
   def people_list
     @person_array.each do |person|
-    puts person[:output]
+      puts person[:output]
     end
   end
 
   def person_rent
     @person_array.each_with_index do |person, index|
-     puts "#{index}) #{person[:output]}"
+      puts "#{index}) #{person[:output]}"
     end
   end
 end

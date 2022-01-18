@@ -21,7 +21,7 @@ class BooksList
 
   def book_list
     @books.each do |book|
-     puts book[:output]
+      puts book[:output]
     end
   end
 
