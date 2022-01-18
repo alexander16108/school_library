@@ -1,6 +1,5 @@
-# Decode morse message
-
-This project consist of a ruby code to decode morse messages.
+# school_library
+> In this project, I started building my school library app. In this initial step, I implemented the classes to represent students and teachers. Next, I used the Decorator design pattern to validate and correct the names of people. I then finish creating the remaining classes for our school library and created the associations between them. Finally, I created a form of UI for my school library app. This way it can be invoked as an executable and not something a user can use in IRB exclusively.
 
 ## Built With
 
@@ -20,7 +19,7 @@ To get a local copy up and running follow these simple example steps.
 
 
 ### Usage
-- `$ git clone https://github.com/alexander16108/school_library/tree/decode`
+- `$ git clone https://github.com/alexander16108/school_library.git`
 - `$ cd school_library`
 - run the command `code .` to open the file in VS Code
 - run the command `irb` in the command prompt
@@ -32,6 +31,13 @@ To get a local copy up and running follow these simple example steps.
 
 - GitHub: [Alexander](https://github.com/AlexanderMayowa)
 - LinkedIn: [Alexander odufuye 🤓](https://www.linkedin.com/in/[codingrex/)
+
+👤 **Ngu Kingsely**
+
+- GitHub: [@Kingstalux](https://github.com/Kingstalux)
+- Twitter: [@NguKingsley](https://twitter.com/NguKingsley)
+- LinkedIn: [Ngu Kingsely](https://www.linkedin.com/in/ngu-kingsely-junior-cho-974b60136/)
+
 
 ## 🤝 Contributing
 
