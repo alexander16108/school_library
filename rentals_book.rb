@@ -1,3 +1,6 @@
+require_relative './book_list'
+require './refactored'
+
 class Rents
   def initialize
     @person_array = []

@@ -4,6 +4,14 @@ require './school-library/persons'
 require './school-library/teacher'
 require './school-library/book'
 
+def user_input
+  print 'Age: '
+  user_age = Integer(gets.chomp)
+
+  print 'Name: '
+  user_name = gets.chomp
+end
+
 class Methods
   def initialize
     @person_array = []
@@ -12,14 +20,9 @@ class Methods
   def create_person
     puts 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     person_option = Integer(gets.chomp)
-
     case person_option
     when 1
-      print 'Age: '
-      user_age = Integer(gets.chomp)
-
-      print 'Name: '
-      user_name = gets.chomp
+      user_input
 
       print 'Has parent permission? [Y/N]: '
       user_permission = gets.chomp.to_s.upcase
@@ -39,11 +42,7 @@ class Methods
       puts 'Person created successfully!'
       puts "\n"
     when 2
-      print 'Age: '
-      user_age = Integer(gets.chomp)
-
-      print 'Name: '
-      user_name = gets.chomp
+      user_input
 
       print 'Specialization: '
       user_specialization = gets.chomp

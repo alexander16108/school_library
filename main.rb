@@ -1,5 +1,6 @@
 require_relative './refactored'
 require_relative './rentals_book'
+require_relative './book_list'
 
 class App
   def self.home_page
