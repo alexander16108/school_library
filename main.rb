@@ -29,7 +29,7 @@ class App
   method = Methods.new
   books = BooksList.new
   rent = Rents.new(books, method)
-  store = Storing.new(books)
+  store = Storing.new(books, method, rent)
 
   loop do
     case home_page
@@ -47,6 +47,7 @@ class App
       rent.rental_list
     when 7
       puts 'Thank you for using the app!'
+      store.from_people_to_json
       store.store_data
       exit
     else

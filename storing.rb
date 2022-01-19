@@ -1,9 +1,3 @@
-require_relative '../school-library/persons'
-require_relative '../school-library/book'
-require_relative '../school-library/classroom'
-require_relative '../school-library/student'
-require_relative '../school-library/rental'
-require_relative '../school-library/teacher'
 require 'json'
 
 class Storing
@@ -15,12 +9,10 @@ class Storing
     
 def from_people_to_json
   people_json = []
-  @people.each do |person|
+  @people.list_people.each do |person|
     people_json.push(person.to_json)
   end
-  people_json = json.dump({ 
-  people : people_json
-   })
+  send = JSON.dump(people_json)
    File.write("people.json", people_json)
 end
 
@@ -44,7 +36,9 @@ end
   
     def store_data
       data = []
-      data.push(@books.to_json)
+      @books.list_book.each do |book|
+       data.push(book.to_json)
+      end
       send = JSON.dump(data)
       if !File.exist?("./book.json")
         File.new("./book.json", "w+")
@@ -53,11 +47,3 @@ end
     end
 end
 
-# @books.each do |book|
-#     data.push(book)
-#   end
-
-
-
-# books = [{"Title"=>"My title", "Author"=>"My author"}]
-# File.open("books.json", "w") { |f| f.puts books.to_json }

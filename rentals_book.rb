@@ -12,12 +12,12 @@ class Rents
     puts 'Select a book from the following list by number: '
     @books.rent_book
     book_selected = Integer(gets.chomp)
-    book_chosen = @books.book_list[book_selected][:object]
+    book_chosen = @books.list_book[book_selected][:object]
 
     puts 'Select a person from the following list by number (not id): '
     @person_array.person_rent
     person_selected = Integer(gets.chomp)
-    person_chosen = @person_array.people_list[person_selected][:object]
+    person_chosen = @person_array.list_people[person_selected][:object]
 
     print 'Date: '
     rental_date = gets.chomp

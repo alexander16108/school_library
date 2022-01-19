@@ -70,6 +70,12 @@ class Methods
     end
   end
 
+  def list_people
+    @person_array.each do |person|
+      person[:output]
+    end
+  end
+
   def person_rent
     @person_array.each_with_index do |person, index|
       puts "#{index}) #{person[:output]}"
