@@ -4,6 +4,7 @@ require './school-library/classroom'
 require './school-library/student'
 require './school-library/rental'
 require './school-library/teacher'
+require 'pry'
 require 'json'
 
 module Storing
@@ -23,7 +24,7 @@ module Storing
                               person: person_json
                             })
 
-    File.write('people.json', person_json)
+    File.write('person.json', person_json)
   end
 
   def from_json_to_person(person)
@@ -44,6 +45,49 @@ module Storing
     end
   end
 
+  def from_json_to_rentals(rentals)
+    rentals_data = JSON.parse(rentals)['rentals']
+    return if rentals_data == []
+
+    rentals_data.each do |object|
+      json_object = JSON.parse(object)
+      rental = Rental.new(date: json_object['date'], person: @person[person_index_lookup(json_object)],
+                          book: @books[book_index_lookup(json_object)])
+
+      @rentals.push(rental) if json_object
+    end
+  end
+
+  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  def person_index_lookup(object)
+    object = JSON.parse(object['person'])
+
+    if object['classname'] == 'Teacher'
+      @people.each_with_index do |person, index|
+        if object['classname'] == person.class.to_s &&
+           object['name'] == person.name && object['age'] == person.age &&
+           object['specialization'] == person.specialization
+          return index
+        end
+      end
+    else
+      @people.each_with_index do |person, index|
+        if object['age'] == person.age &&
+           object['name'] == person.name &&
+           object['parent_permission'] == person.parent_permission &&
+           object['classname'] == person.class.to_s
+          return index
+        end
+      end
+    end
+  end
+
+  def book_index_lookup(object)
+    object = JSON.parse(object['book'])
+    @books.each_with_index do |book, index|
+      return index if object['title'] == book.title and object['author'] == book.author
+    end
+  end
   #   def store_data
   #     data = []
   #     @books.list_book.each do |book|
@@ -64,3 +108,4 @@ module Storing
   #   File.write('./book.json', data)
   # end
 end
+# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
