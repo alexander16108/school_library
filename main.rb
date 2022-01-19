@@ -1,6 +1,7 @@
 require_relative './refactored'
 require_relative './rentals_book'
 require_relative './book_list'
+require_relative './storing'
 
 class App
   def self.home_page
@@ -28,6 +29,7 @@ class App
   method = Methods.new
   books = BooksList.new
   rent = Rents.new(books, method)
+  store = Storing.new(books)
 
   loop do
     case home_page
@@ -45,6 +47,7 @@ class App
       rent.rental_list
     when 7
       puts 'Thank you for using the app!'
+      store.store_data
       exit
     else
       puts 'Choose a number between 1 to 7'
