@@ -15,7 +15,7 @@ class Book
   def to_json(*_args)
     JSON.dump({
                 title: @title,
-                author: @author.to_json,
+                author: @author.to_json
               })
   end
 end

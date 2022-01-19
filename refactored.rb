@@ -1,8 +1,8 @@
-require './school-library/student'
-require './school-library/rental'
-require './school-library/persons'
-require './school-library/teacher'
-require './school-library/book'
+require_relative './school-library/student'
+require_relative './school-library/rental'
+require_relative './school-library/persons'
+require_relative './school-library/teacher'
+require_relative './school-library/book'
 
 def input_age
   print 'Age: '

@@ -1,9 +1,35 @@
-require_relative './refactored'
-require_relative './rentals_book'
-require_relative './book_list'
-require_relative './storing'
+require './refactored'
+require './rentals_book'
+require './book_list'
+require './storing'
 
 class App
+  include Storing
+
+  def save_data
+    from_books_to_json
+    from_people_to_json
+    from_rentals_to_json
+    puts 'data successfully saved !'
+  end
+
+  def load_data
+    if File.exist?('books.json')
+      books = File.read 'books.json'
+      from_file(books: books)
+    end
+
+    if File.exist?('person.json')
+      person = File.read 'person.json'
+      from_file(person: person)
+    end
+
+    return unless File.exist?('rentals.json') && File.exist?('person.json') && File.exist?('books.json')
+
+    rentals = File.read 'rentals.json'
+    from_file(rentals: rentals)
+  end
+
   def self.home_page
     puts 'Welcome to the OOP School Library App!'
     puts "\n"
@@ -29,7 +55,7 @@ class App
   method = Methods.new
   books = BooksList.new
   rent = Rents.new(books, method)
-  store = Storing.new(books, method, rent)
+  # store = Storing.new(books, method, rent)
 
   loop do
     case home_page
@@ -46,9 +72,8 @@ class App
     when 6
       rent.rental_list
     when 7
+      save_data
       puts 'Thank you for using the app!'
-      store.from_people_to_json
-      store.store_data
       exit
     else
       puts 'Choose a number between 1 to 7'
@@ -57,7 +82,9 @@ class App
 end
 
 def main
-  App.new
+  app = App.new
+  app.load_data
+  app.run
 end
 
 main
