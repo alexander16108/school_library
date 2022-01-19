@@ -15,4 +15,14 @@ class Student < Person
   def play_hooky
     "¯\(ツ)/¯"
   end
+
+  def to_json(*_args)
+    JSON.dump({
+                classname: self.class,
+                age: @age,
+                name: @name,
+                parent_permission: @parent_permission,
+                specialization: @specialization
+              })
+  end
 end
