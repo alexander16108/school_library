@@ -1,1 +1,0 @@
-["{\"output\":\"[Student] Name: king, ID: 281, Age: 23\",\"object\":{\"classname\":\"Student\",\"age\":\"23\",\"name\":\"king\",\"parent_permission\":false,\"specialization\":null}}", "{\"output\":\"[Teacher] Name: Doctor, ID: 374, Age: 44\",\"object\":{\"classname\":\"Teachers\",\"age\":\"44\",\"name\":\"Doctor\",\"parent_permission\":true,\"specialization\":\"Rose\"}}"]

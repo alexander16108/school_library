@@ -16,7 +16,15 @@ end
 
 class Methods
   def initialize
-    @person_array = []
+    person_file = './person.json'
+    f = File.read(person_file)
+    if f.empty? == false
+      json = JSON.parse(f)
+      @person_array = []
+      @person_array.push(json)
+    else
+      @person_array = []
+    end 
   end
 
   def create_person
@@ -52,10 +60,7 @@ class Methods
       user_specialization = gets.chomp
 
       teacher = Teachers.new(user_age, user_name, user_specialization)
-      @person_array.push({
-                           output: "[Teacher] Name: #{teacher.name}, ID: #{teacher.id}, Age: #{teacher.age}",
-                           object: teacher
-                         })
+      @person_array.push("[Teacher] Name: #{teacher.name}, ID: #{teacher.id}, Age: #{teacher.age}")
 
       puts 'Person created successfully!'
       puts "\n"

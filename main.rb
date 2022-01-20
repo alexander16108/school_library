@@ -4,25 +4,6 @@ require './book_list'
 require './storing'
 
 class App
-  include Storing
-
-  def load_data
-    if File.exist?('book.json')
-      books = File.read 'book.json'
-      from_file(books: books)
-    end
-
-    if File.exist?('people.json')
-      people = File.read 'people.json'
-      from_file(person: person)
-    end
-
-    return unless File.exist?('rental.json') && File.exist?('people.json') && File.exist?('books.json')
-
-    rentals = File.read 'rental.json'
-    from_file(rentals: rentals)
-  end
-
   def self.home_page
     puts 'Welcome to the OOP School Library App!'
     puts "\n"
@@ -37,11 +18,9 @@ class App
       '6' => 'List all rentals for a given person id',
       '7' => 'Exit'
     }
-
     @content.each do |index, string|
       puts "#{index} - #{string}"
     end
-
     Integer(gets.chomp)
   end
 
@@ -65,9 +44,8 @@ class App
     when 6
       rent.rental_list
     when 7
-        store.from_books_to_json
-        store.from_people_to_json
-        store.from_rentals_to_json
+        store.store_books
+        # store.store_persons
       puts 'Thank you for using the app!'
       exit
     else
@@ -82,3 +60,20 @@ def main
 end
 
 main
+
+# def load_data
+#   if File.exist?('book.json')
+#     books = File.read 'book.json'
+#     from_file(books: books)
+#   end
+
+#   if File.exist?('people.json')
+#     people = File.read 'people.json'
+#     from_file(person: person)
+#   end
+
+#   return unless File.exist?('rental.json') && File.exist?('people.json') && File.exist?('books.json')
+
+#   rentals = File.read 'rental.json'
+#   from_file(rentals: rentals)
+# end

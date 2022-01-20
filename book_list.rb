@@ -1,6 +1,17 @@
+require 'json'
+
 class BooksList
   def initialize
-    @books = []
+    book_file = './book.json'
+    f = File.read(book_file)
+    if f.empty? == false
+      json = JSON.parse(f)
+      @books = []
+      b = Book.new(json[0]['title'], json[0]['author'])
+      @books.push(b)
+    else
+      @books = []
+    end 
   end
 
   def create_book
@@ -13,21 +24,19 @@ class BooksList
     puts 'Book created successfully!'
 
     book = Book.new(book_title, book_author)
-    @books.push({
-                  output: "Title: #{book.title}, Author: #{book.author}",
-                  object: book
-                })
+    # @books.push("Title: #{book.title}, Author: #{book.author}")
+    @books.push(book)
   end
-
+  
   def book_list
     @books.each do |book|
-      puts book[:output]
+      puts "Title: #{book.title}, Author: #{book.author}"
     end
   end
 
   def list_book
     @books.each do |book|
-      book[:output]
+       book
     end
   end
 
@@ -36,4 +45,5 @@ class BooksList
       puts "#{index}) #{book[:output]}"
     end
   end
+  
 end
