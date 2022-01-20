@@ -6,27 +6,20 @@ require './storing'
 class App
   include Storing
 
-  def save_data
-    from_books_to_json
-    from_people_to_json
-    from_rentals_to_json
-    puts 'data successfully saved !'
-  end
-
   def load_data
-    if File.exist?('books.json')
-      books = File.read 'books.json'
+    if File.exist?('book.json')
+      books = File.read 'book.json'
       from_file(books: books)
     end
 
-    if File.exist?('person.json')
-      person = File.read 'person.json'
+    if File.exist?('people.json')
+      people = File.read 'people.json'
       from_file(person: person)
     end
 
-    return unless File.exist?('rentals.json') && File.exist?('person.json') && File.exist?('books.json')
+    return unless File.exist?('rental.json') && File.exist?('people.json') && File.exist?('books.json')
 
-    rentals = File.read 'rentals.json'
+    rentals = File.read 'rental.json'
     from_file(rentals: rentals)
   end
 
@@ -55,7 +48,7 @@ class App
   method = Methods.new
   books = BooksList.new
   rent = Rents.new(books, method)
-  # store = Storing.new(books, method, rent)
+  store = Storing.new(books, method, rent)
 
   loop do
     case home_page
@@ -72,7 +65,9 @@ class App
     when 6
       rent.rental_list
     when 7
-      save_data
+        store.from_books_to_json
+        store.from_people_to_json
+        store.from_rentals_to_json
       puts 'Thank you for using the app!'
       exit
     else

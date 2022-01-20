@@ -88,24 +88,5 @@ module Storing
       return index if object['title'] == book.title and object['author'] == book.author
     end
   end
-  #   def store_data
-  #     data = []
-  #     @books.list_book.each do |book|
-  #      data.push(book.to_json)
-  #     end
-  #     send = JSON.dump(data)
-  #     if !File.exist?("./book.json")
-  #       File.new("./book.json", "w+")
-  #     end
-  #   end
-  # end
-
-  # def store_data
-  #   data = []
-  #   data.push(@books.to_json)
-  #   send = JSON.dump(data)
-  #   File.new('./book.json', 'w+') unless File.exist?('./book.json')
-  #   File.write('./book.json', data)
-  # end
 end
 # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
