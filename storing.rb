@@ -1,10 +1,3 @@
-# require './school-library/persons'
-# require './school-library/book'
-# require './school-library/classroom'
-# require './school-library/student'
-# require './school-library/rental'
-# require './school-library/teacher'
-# require 'pry'
 require 'json'
 
 class Storing
@@ -34,13 +27,10 @@ class Storing
 
   def store_rentals
     rentals_json = []
-    @rentals.list_people.each do |rentals|
+    @rentals.list_rentals.each do |rentals|
       rentals_json.push(rentals)
     end
     send = JSON.dump(rentals: rentals_json)
-
     File.write('rentals.json', rentals_json.to_json)
   end
-
-
 end

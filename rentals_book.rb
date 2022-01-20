@@ -34,13 +34,20 @@ class Rents
     @rental_array.push(Rental.new(rental_date, book_chosen, person_chosen))
   end
 
+  def list_rentals
+    @rental_array.each do |book|
+      book
+    end
+  end
+
   def rental_list
     print 'ID of person: '
-    person_id = Integer(gets.chomp)
+    person_id = gets.chomp
+    id = person_id.to_i
     puts 'Rental: '
 
     @rental_array.each do |rental|
-      if person_id == rental.person.id
+      if rental.person.id == id
         puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
       end
     end

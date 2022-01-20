@@ -61,20 +61,3 @@ def main
 end
 
 main
-
-# def load_data
-#   if File.exist?('book.json')
-#     books = File.read 'book.json'
-#     from_file(books: books)
-#   end
-
-#   if File.exist?('people.json')
-#     people = File.read 'people.json'
-#     from_file(person: person)
-#   end
-
-#   return unless File.exist?('rental.json') && File.exist?('people.json') && File.exist?('books.json')
-
-#   rentals = File.read 'rental.json'
-#   from_file(rentals: rentals)
-# end
