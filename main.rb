@@ -45,7 +45,7 @@ class App
       rent.rental_list
     when 7
         store.store_books
-        # store.store_persons
+        store.store_persons
       puts 'Thank you for using the app!'
       exit
     else

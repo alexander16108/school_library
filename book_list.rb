@@ -7,8 +7,7 @@ class BooksList
     if f.empty? == false
       json = JSON.parse(f)
       @books = []
-      b = Book.new(json[0]['title'], json[0]['author'])
-      @books.push(b)
+      @books.push(json)
     else
       @books = []
     end 
@@ -24,13 +23,12 @@ class BooksList
     puts 'Book created successfully!'
 
     book = Book.new(book_title, book_author)
-    # @books.push("Title: #{book.title}, Author: #{book.author}")
-    @books.push(book)
+    @books.push("Title: #{book.title}, Author: #{book.author}")
   end
   
   def book_list
     @books.each do |book|
-      puts "Title: #{book.title}, Author: #{book.author}"
+      puts book
     end
   end
 

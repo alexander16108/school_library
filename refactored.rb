@@ -45,10 +45,7 @@ class Methods
         user_permission = false
       end
       student = Student.new(user_age, user_name, parent_permission: user_permission)
-      @person_array.push({
-                           output: "[Student] Name: #{student.name}, ID: #{student.id}, Age: #{student.age}",
-                           object: student
-                         })
+      @person_array.push("[Student] Name: #{student.name}, ID: #{student.id}, Age: #{student.age}")
 
       puts 'Person created successfully!'
       puts "\n"
@@ -71,19 +68,19 @@ class Methods
 
   def people_list
     @person_array.each do |person|
-      puts person[:output]
+      puts person
     end
   end
 
   def list_people
     @person_array.each do |person|
-      person[:output]
+      person
     end
   end
 
   def person_rent
     @person_array.each_with_index do |person, index|
-      puts "#{index}) #{person[:output]}"
+      puts "#{index}) #{person}"
     end
   end
 end

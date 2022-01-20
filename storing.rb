@@ -17,10 +17,10 @@ class Storing
   def store_persons
     person_json = []
     @persons.list_people.each do |person|
-      person_json.push(person.to_json)
+      person_json.push(person)
     end
     send = JSON.dump(person_json)
-    File.write('person.json', person_json)
+    File.write('person.json', person_json.to_json)
   end
 
   def store_books
