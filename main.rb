@@ -46,6 +46,7 @@ class App
     when 7
         store.store_books
         store.store_persons
+        store.store_rentals
       puts 'Thank you for using the app!'
       exit
     else

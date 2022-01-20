@@ -40,7 +40,7 @@ class BooksList
 
   def rent_book
     @books.each_with_index do |book, index|
-      puts "#{index}) #{book[:output]}"
+      puts "#{index}) #{book}"
     end
   end
   
