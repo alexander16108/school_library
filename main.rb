@@ -1,59 +1,108 @@
-require_relative './refactored'
-require_relative './rentals_book'
-require_relative './book_list'
+require_relative './school-library/methods/create_book'
+require_relative './school-library/methods/create_student'
+require_relative './school-library/methods/create_teacher'
+require_relative './school-library/methods/create_rental'
+require_relative './school-library/methods/people_choice'
+require_relative './school-library/methods/list_book'
+require_relative './school-library/methods/list_people'
+require_relative './school-library/methods/list_rental'
+require_relative './school-library/module/storing'
+require 'json'
 
 class App
-  def self.home_page
+  include Storage
+  def initialize
+    @books = []
+    @created_books = CreateBook.new(@books)
+    @books_list = BookList.new(@books)
+
+    @people = []
+    @people_list = PeopleList.new(@people)
+    @choose_person_type = PersonType.new(@people)
+
+    @rentals = []
+    @created_rentals = CreateRental.new(@people, @rentals, @books)
+    @rentals_list = RentalList.new(@rentals)
+  end
+
+  def save_data
+    from_books_to_file
+    from_people_to_file
+    from_rentals_to_file
+    puts 'data successfully saved !'
+  end
+
+  def load_data
+    if File.exist?('books.json')
+      books = File.read 'books.json'
+      from_file(books: books)
+    end
+
+    if File.exist?('people.json')
+      people = File.read 'people.json'
+      from_file(people: people)
+    end
+
+    return unless File.exist?('rentals.json') && File.exist?('people.json') && File.exist?('books.json')
+
+    rentals = File.read 'rentals.json'
+    from_file(rentals: rentals)
+  end
+
+  def menu
     puts 'Welcome to the OOP School Library App!'
     puts "\n"
     puts 'Please choose an option by entering a number: '
 
-    @content = {
-      '1' => 'List all books',
-      '2' => 'List all people',
-      '3' => 'Create a person',
-      '4' => 'Create a book',
-      '5' => 'Create a rental',
-      '6' => 'List all rentals for a given person id',
-      '7' => 'Exit'
+    @options = {
+      '1': 'List all books',
+      '2': 'List all people',
+      '3': 'Create a person',
+      '4': 'Create a book',
+      '5': 'Create a rental',
+      '6': 'List all rentals for a given person id',
+      '7': 'Exit'
     }
 
-    @content.each do |index, string|
+    @options.each do |index, string|
       puts "#{index} - #{string}"
     end
-
-    Integer(gets.chomp)
+    print "\nEnter option from above list: "
+    gets.chomp.to_i
   end
 
-  method = Methods.new
-  books = BooksList.new
-  rent = Rents.new(books, method)
-
-  loop do
-    case home_page
+  def homepage(input)
+    case input
     when 1
-      books.book_list
+      @books_list.list_books
     when 2
-      method.people_list
+      @people_list.list_people
     when 3
-      method.create_person
+      @choose_person_type.choose_person
     when 4
-      books.create_book
+      @created_books.create_book
     when 5
-      rent.create_rental
+      @created_rentals.create_rental
     when 6
-      rent.rental_list
-    when 7
-      puts 'Thank you for using the app!'
-      exit
+      @rentals_list.rentals_list
     else
-      puts 'Choose a number between 1 to 7'
+      save_data
+      puts 'Thanks for using our library app , hope to see you soon ! '
+      exit
+    end
+  end
+
+  def run
+    loop do
+      homepage(menu)
     end
   end
 end
 
 def main
-  App.new
+  app = App.new
+  app.load_data
+  app.run
 end
 
 main
