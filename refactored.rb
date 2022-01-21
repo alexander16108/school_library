@@ -1,18 +1,7 @@
-require_relative './school-library/student'
-require_relative './school-library/rental'
-require_relative './school-library/persons'
-require_relative './school-library/teacher'
-require_relative './school-library/book'
-
-def input_age
-  print 'Age: '
-  gets.chomp
-end
-
-def input_name
-  print 'Name: '
-  gets.chomp
-end
+require './school-library/student'
+require './school-library/rental'
+require './school-library/persons'
+require './school-library/teacher'
 
 class Methods
   def initialize
@@ -27,37 +16,47 @@ class Methods
     end
   end
 
+  def input_age; end
+
+  def input_name; end
+
   def create_person
     puts 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     person_option = Integer(gets.chomp)
     case person_option
     when 1
-      user_age = input_age
-      user_name = input_name
+      print 'Age: '
+      age = gets.chomp.to_i
+
+      print 'Name: '
+      name = gets.chomp
 
       print 'Has parent permission? [Y/N]: '
-      user_permission = gets.chomp.to_s.upcase
+      permission = gets.chomp.to_s.upcase
 
-      case user_permission
+      case permission
       when 'Y'
-        user_permission = true
+        permission = true
       when 'N'
-        user_permission = false
+        permission = false
       end
-      student = Student.new(user_age, user_name, parent_permission: user_permission)
-      @person_array.push("[Student] Name: #{student.name}, ID: #{student.id}, Age: #{student.age}")
+      student = Student.new(age: age, name: name, parent_permission: permission)
+      @people.push(student)
 
       puts 'Person created successfully!'
       puts "\n"
     when 2
-      user_age = input_age
-      user_name = input_name
+      print 'Age: '
+      age = gets.chomp.to_i
+
+      print 'Name: '
+      name = gets.chomp
 
       print 'Specialization: '
-      user_specialization = gets.chomp
+      specialization = gets.chomp
 
-      teacher = Teachers.new(user_age, user_name, user_specialization)
-      @person_array.push("[Teacher] Name: #{teacher.name}, ID: #{teacher.id}, Age: #{teacher.age}")
+      teacher = Teachers.new(age: age, name: name, specialization: specialization)
+      @people.push(teacher)
 
       puts 'Person created successfully!'
       puts "\n"
@@ -67,14 +66,11 @@ class Methods
   end
 
   def people_list
-    @person_array.each do |person|
-      puts person
-    end
-  end
+    puts "\n\nNo person is added yet, add someone!" if @people.empty?
 
-  def list_people
-    @person_array.each do |person|
-      person
+    @people.each do |person|
+      person.correct_name
+      puts "[#{person.class.name}] Name: #{person.name}, id:#{person.id}, Age: #{person.age}\n"
     end
   end
 

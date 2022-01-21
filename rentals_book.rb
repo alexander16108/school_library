@@ -1,9 +1,9 @@
 require_relative './book_list'
-require './refactored'
+require_relative './refactored'
+require_relative './school-library/rental'
 
 class Rents
-  def initialize(books, persons)
-    @person_array = persons
+  def initialize(books, rentals)
     @books = books
     rental_file = './rentals.json'
     f = File.read(rental_file)
@@ -24,14 +24,14 @@ class Rents
     puts book_chosen
 
     puts 'Select a person from the following list by number (not id): '
-    @person_array.person_rent
+    @people.person_rent
     person_selected = Integer(gets.chomp)
-    person_chosen = @person_array.list_people[person_selected]
+    person_chosen = @people.people_list[person_selected][:object]
 
     print 'Date: '
     rental_date = gets.chomp
 
-    @rental_array.push(Rental.new(rental_date, book_chosen, person_chosen))
+    @rentals.push(Rental.new(rental_date, book_chosen, person_chosen))
   end
 
   def list_rentals

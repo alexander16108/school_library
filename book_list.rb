@@ -2,10 +2,6 @@ require 'json'
 
 class BooksList
   def initialize
-    book_file = './book.json'
-    f = File.read(book_file)
-    if f.empty? == false
-      json = JSON.parse(f)
       @books = []
       @books.push(json)
     else
@@ -40,7 +36,7 @@ class BooksList
 
   def rent_book
     @books.each_with_index do |book, index|
-      puts "#{index}) #{book}"
+      puts "#{index + 1}) Author: #{book.author}, Title: #{book.title}"
     end
   end
 end
