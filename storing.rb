@@ -12,16 +12,16 @@ class Storing
     @persons.list_people.each do |person|
       person_json.push(person)
     end
-    send = JSON.dump(person_json)
+    person_json = JSON.dump(person_json)
     File.write('person.json', person_json.to_json)
   end
 
   def store_books
     books_json = []
-    @books.list_book.each do |book|
+    @books.book_list.each do |book|
       books_json.push(book)
     end
-    send = JSON.dump(books_json)
+    books_json = JSON.dump(books_json)
     File.write('./book.json', books_json.to_json)
   end
 
@@ -30,7 +30,7 @@ class Storing
     @rentals.list_rentals.each do |rentals|
       rentals_json.push(rentals)
     end
-    send = JSON.dump(rentals: rentals_json)
+    rentals_json = JSON.dump(rentals: rentals_json)
     File.write('rentals.json', rentals_json.to_json)
   end
 end

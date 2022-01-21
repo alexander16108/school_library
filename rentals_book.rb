@@ -5,7 +5,7 @@ class Rents
   def initialize(books, persons)
     @person_array = persons
     @books = books
-    rental_file = './rental.json'
+    rental_file = './rentals.json'
     f = File.read(rental_file)
     if f.empty? == false
       json = JSON.parse(f)
@@ -13,14 +13,14 @@ class Rents
       @rental_array.push(json)
     else
       @rental_array = []
-    end 
+    end
   end
 
   def create_rental
     puts 'Select a book from the following list by number: '
     @books.rent_book
     book_selected = Integer(gets.chomp)
-    book_chosen = @books.list_book[book_selected]
+    book_chosen = @books.book_list[book_selected]
     puts book_chosen
 
     puts 'Select a person from the following list by number (not id): '
@@ -42,14 +42,18 @@ class Rents
 
   def rental_list
     print 'ID of person: '
-    person_id = gets.chomp
-    id = person_id.to_i
-    puts 'Rental: '
+    id = gets.chomp.to_i
 
-    @rental_array.each do |rental|
-      if rental.person.id == id
+    desired_rentals = @rental_array.find { |rental| rental.person.id == id }
+
+    if desired_rentals.empty?
+      puts 'No book rented for this person.'
+    else
+      puts 'Rentals: '
+      desired_rentals.each do |rental|
         puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
       end
+      puts
     end
   end
 end

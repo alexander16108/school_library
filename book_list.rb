@@ -10,7 +10,7 @@ class BooksList
       @books.push(json)
     else
       @books = []
-    end 
+    end
   end
 
   def create_book
@@ -25,7 +25,7 @@ class BooksList
     book = Book.new(book_title, book_author)
     @books.push("Title: #{book.title}, Author: #{book.author}")
   end
-  
+
   def book_list
     @books.each do |book|
       puts book
@@ -34,7 +34,7 @@ class BooksList
 
   def list_book
     @books.each do |book|
-       book
+      book
     end
   end
 
@@ -43,5 +43,4 @@ class BooksList
       puts "#{index}) #{book}"
     end
   end
-  
 end

@@ -1,1 +1,1 @@
-[{"date":"66","person":"[[\"[Student] Name: aa, ID: 493, Age: 12\"]]","book":"[[\"Title: aa, Author: bb\"]]"}]
+"{\"rentals\":[{\"date\":\"12\",\"person\":\"[\\\"[Student] Name: aa, ID: 493, Age: 12\\\"]\",\"book\":\"[\\\"Title: aa, Author: bb\\\"]\"}]}"

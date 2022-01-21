@@ -44,9 +44,9 @@ class App
     when 6
       rent.rental_list
     when 7
-        store.store_books
-        store.store_persons
-        store.store_rentals
+      store.store_books
+      store.store_persons
+      store.store_rentals
       puts 'Thank you for using the app!'
       exit
     else

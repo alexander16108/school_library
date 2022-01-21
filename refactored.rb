@@ -24,7 +24,7 @@ class Methods
       @person_array.push(json)
     else
       @person_array = []
-    end 
+    end
   end
 
   def create_person
@@ -80,7 +80,7 @@ class Methods
 
   def person_rent
     @person_array.each_with_index do |person, index|
-      puts "#{index}) #{person}"
+      puts("#{index} #{person}")
     end
   end
 end
