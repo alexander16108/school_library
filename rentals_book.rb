@@ -1,11 +1,12 @@
 require_relative './book_list'
-require './refactored'
+require_relative './refactored'
+require_relative './school-library/rental'
 
 class Rents
-  def initialize(books, persons)
-    @person_array = persons
+  def initialize(books, rentals)
     @books = books
-    @rental_array = []
+    @people = []
+    @rentals = rentals
   end
 
   def create_rental
@@ -15,24 +16,26 @@ class Rents
     book_chosen = @books.book_list[book_selected][:object]
 
     puts 'Select a person from the following list by number (not id): '
-    @person_array.person_rent
+    @people.person_rent
     person_selected = Integer(gets.chomp)
-    person_chosen = @person_array.people_list[person_selected][:object]
+    person_chosen = @people.people_list[person_selected][:object]
 
     print 'Date: '
     rental_date = gets.chomp
 
-    @rental_array.push(Rental.new(rental_date, book_chosen, person_chosen))
+    @rentals.push(Rental.new(rental_date, book_chosen, person_chosen))
   end
 
   def rental_list
     print 'ID of person: '
     person_id = Integer(gets.chomp)
+    desired_rentals = @rentals.select { |rental| rental.person.id == person_id }
+
     puts 'Rental: '
 
-    @rental_array.each do |rental|
-      if person_id == rental.person.id
-        puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
+    @rentals.each do |rental|
+      if desired_rentals.empty?
+        puts "Date : #{rental.date}, Title: #{rental.book.title}, Author :#{rental.book.author}."
       end
     end
   end

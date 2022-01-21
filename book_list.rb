@@ -21,13 +21,13 @@ class BooksList
 
   def book_list
     @books.each do |book|
-      puts book[:output]
+      puts "  Author: #{book.author}, Title: #{book.title} \n\n"
     end
   end
 
   def rent_book
     @books.each_with_index do |book, index|
-      puts "#{index}) #{book[:output]}"
+      puts "#{index + 1}) Author: #{book.author}, Title: #{book.title}"
     end
   end
 end
