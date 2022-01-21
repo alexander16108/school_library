@@ -11,4 +11,11 @@ class Book
     @rentals.push(rental)
     rental.book = self
   end
+
+  def to_json(*_args)
+    JSON.dump({
+                title: @title,
+                author: @author.to_json
+              })
+  end
 end

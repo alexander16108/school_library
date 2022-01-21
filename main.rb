@@ -46,11 +46,9 @@ class App
       '6' => 'List all rentals for a given person id',
       '7' => 'Exit'
     }
-
     @content.each do |index, string|
       puts "#{index} - #{string}"
     end
-
     Integer(gets.chomp)
   end
 

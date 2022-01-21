@@ -1,6 +1,8 @@
+require 'json'
+
 class BooksList
   def initialize
-    @books = []
+      @books = []
   end
 
   def create_book
@@ -13,12 +15,9 @@ class BooksList
     puts 'Book created successfully!'
 
     book = Book.new(book_title, book_author)
-    @books.push({
-                  output: "Title: #{book.title}, Author: #{book.author}",
-                  object: book
-                })
+    @books.push("Title: #{book.title}, Author: #{book.author}")
   end
-
+  
   def book_list
     @books.each do |book|
       puts "  Author: #{book.author}, Title: #{book.title} \n\n"
@@ -30,4 +29,5 @@ class BooksList
       puts "#{index + 1}) Author: #{book.author}, Title: #{book.title}"
     end
   end
+  
 end

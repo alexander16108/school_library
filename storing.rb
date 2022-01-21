@@ -3,7 +3,7 @@ require_relative './refactored'
 require 'json'
 require 'pry'
 
-module Storing
+class Storing
   def from_file(people: nil, books: nil, rentals: nil)
     store_persons(people) if people
     store_books(books) if books

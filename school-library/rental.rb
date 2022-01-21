@@ -20,4 +20,12 @@ class Rental
   def date=(date)
     date.rental.push(self) unless date.rental.include?(self)
   end
+
+  def to_json(*_args)
+    JSON.dump({
+                date: @date,
+                person: @person.to_json,
+                book: @book.to_json
+              })
+  end
 end

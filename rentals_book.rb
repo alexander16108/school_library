@@ -13,7 +13,8 @@ class Rents
     puts 'Select a book from the following list by number: '
     @books.rent_book
     book_selected = Integer(gets.chomp)
-    book_chosen = @books.book_list[book_selected][:object]
+    book_chosen = @books.list_book[book_selected]
+    puts book_chosen
 
     puts 'Select a person from the following list by number (not id): '
     @people.person_rent
@@ -24,6 +25,12 @@ class Rents
     rental_date = gets.chomp
 
     @rentals.push(Rental.new(rental_date, book_chosen, person_chosen))
+  end
+
+  def list_rentals
+    @rental_array.each do |book|
+      book
+    end
   end
 
   def rental_list
